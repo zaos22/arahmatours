@@ -1,0 +1,13 @@
+{
+  "name": "arahmatours",
+  "version": "1.0.0",
+  "description": "Arahma Tours - Umrah Exclusiva desde España",
+  "main": "index.html",
+  "scripts": {
+    "dev": "serve -p 3000 .",
+    "start": "serve -p 3000 ."
+  },
+  "dependencies": {
+    "serve": "^14.2.4"
+  }
+}

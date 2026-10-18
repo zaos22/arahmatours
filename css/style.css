@@ -1,0 +1,241 @@
+:root {
+  /* Design Tokens from DESIGN.md (Serene Celestial Journey) */
+  --surface: #001231;
+  --surface-dim: #001231;
+  --surface-bright: #28395a;
+  --surface-container-lowest: #000d28;
+  --surface-container-low: #071b3b;
+  --surface-container: #0c1f3f;
+  --surface-container-high: #18294a;
+  --surface-container-highest: #233455;
+  --on-surface: #d8e2ff;
+  --on-surface-variant: #c1c7d1;
+  --inverse-surface: #d8e2ff;
+  --inverse-on-surface: #1f3051;
+  --outline: #8c919b;
+  --outline-variant: #424750;
+  --surface-tint: #9fcaff;
+  
+  --primary: #9fcaff;
+  --on-primary: #003259;
+  --primary-container: #014f88;
+  --on-primary-container: #8fc1ff;
+  --inverse-primary: #23619b;
+  --primary-fixed: #d2e4ff;
+  --primary-fixed-dim: #9fcaff;
+  --on-primary-fixed: #001c37;
+  --on-primary-fixed-variant: #00497e;
+  
+  --secondary: #56d6f4;
+  --on-secondary: #003640;
+  --secondary-container: #00aac6;
+  --on-secondary-container: #003943;
+  --secondary-fixed: #acedff;
+  --secondary-fixed-dim: #56d6f4;
+  --on-secondary-fixed: #001f26;
+  --on-secondary-fixed-variant: #004e5c;
+  
+  --tertiary: #a5cfc7;
+  --on-tertiary: #0a3732;
+  --tertiary-container: #2c544e;
+  --on-tertiary-container: #9cc7bf;
+  --tertiary-fixed: #c0ebe3;
+  --tertiary-fixed-dim: #a5cfc7;
+  --on-tertiary-fixed: #00201c;
+  --on-tertiary-fixed-variant: #254d48;
+  
+  --error: #ffb4ab;
+  --on-error: #690005;
+  --error-container: #93000a;
+  --on-error-container: #ffdad6;
+  
+  --background: #001231;
+  --on-background: #d8e2ff;
+  --surface-variant: #233455;
+
+  /* 8px Grid Spacing System */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 40px;
+  --space-6: 48px;
+  --space-8: 64px;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--background);
+  color: var(--on-surface);
+  overflow-x: hidden;
+}
+
+/* Hide scrollbars for cinematic one-take feel while retaining scroll behavior */
+::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* Glassmorphism helpers */
+.glass-panel {
+  background-color: rgba(19, 50, 79, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-pill {
+  background-color: rgba(24, 41, 74, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(86, 214, 244, 0.25);
+}
+
+/* ========================================================= */
+/* DESKTOP / HORIZONTAL (Landscape & PC Viewports)           */
+/* ========================================================= */
+@media (min-width: 1025px) and (orientation: landscape) {
+  /* One-Take Horizontal Track Layout */
+  #horizontal-track {
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory !important;
+    height: calc(100vh - 5rem) !important;
+    min-height: 580px;
+    max-height: 100vh;
+  }
+
+  #horizontal-track > section {
+    min-width: 100vw !important;
+    width: 100vw !important;
+    height: 100% !important;
+    flex-shrink: 0 !important;
+    scroll-snap-align: center !important;
+    padding-top: var(--space-2);
+    padding-bottom: calc(4.5rem + var(--space-2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  #horizontal-track > section > div.relative {
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 100%;
+    max-height: 100%;
+  }
+
+  /* Aside bar is visible on PC/horizontal mode */
+  aside {
+    display: flex !important;
+    pointer-events: none;
+  }
+  aside > div {
+    pointer-events: auto;
+  }
+}
+
+/* ========================================================= */
+/* PANTALLAS ALARGADAS / MÓVILES (Vertical Scroll Mode)      */
+/* ========================================================= */
+@media (max-width: 1024px), (orientation: portrait) {
+  html, body {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    height: auto !important;
+    min-height: 100% !important;
+    position: static !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  main {
+    min-height: auto !important;
+    height: auto !important;
+    padding-top: 5rem !important;
+    overflow: visible !important;
+  }
+
+  main > div.flex.flex-col {
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* El track se convierte en un flujo vertical continuo */
+  #horizontal-track {
+    display: flex !important;
+    flex-direction: column !important;
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
+    height: auto !important;
+    max-height: none !important;
+    min-height: 0 !important;
+    scroll-snap-type: none !important;
+    cursor: default !important;
+    user-select: auto !important;
+  }
+
+  /* Curva SVG decorativa oculta en vertical */
+  #horizontal-track > div.pointer-events-none {
+    display: none !important;
+  }
+
+  /* Cada sección ocupa su alto natural con espaciado uniforme */
+  #horizontal-track > section {
+    min-width: 100% !important;
+    width: 100% !important;
+    min-height: auto !important;
+    height: auto !important;
+    max-height: none !important;
+    flex-shrink: 0 !important;
+    scroll-snap-align: none !important;
+    padding-top: 3.5rem !important;
+    padding-bottom: 3.5rem !important;
+    padding-left: var(--space-2) !important;
+    padding-right: var(--space-2) !important;
+    border-bottom: 1px solid rgba(86, 214, 244, 0.08);
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+  }
+
+  #horizontal-track > section > div.relative {
+    margin: 0 auto !important;
+    width: 100% !important;
+    max-height: none !important;
+    height: auto !important;
+  }
+
+  /* Ocultar barra flotante de navegación horizontal en pantallas verticales */
+  aside {
+    display: none !important;
+  }
+}
+
+/* Header safe sizing */
+header > div {
+  min-height: 4rem;
+}
+
+/* Accessibility: respect preferred-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
