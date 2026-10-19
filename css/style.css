@@ -152,6 +152,71 @@ html, body {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(86, 214, 244, 0.12);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efecto levitación y glow dinámico al interactuar con las tarjetas de viaje */
+#horizontal-track > section .p-space-lg:hover,
+#horizontal-track > section .p-space-md:hover {
+  transform: translateY(-4px);
+  border-color: rgba(86, 214, 244, 0.35);
+  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.8), 0 0 24px rgba(86, 214, 244, 0.2);
+}
+
+/* Animación de entrada fluida para los elementos centrales de cada capítulo */
+#horizontal-track > section > div.relative {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+}
+
+#horizontal-track > section:not(.chapter-active) > div.relative {
+  opacity: 0.75;
+  transform: scale(0.975);
+}
+
+#horizontal-track > section.chapter-active > div.relative {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Animación de flotación suave y sutil para insignias e iconos clave */
+@keyframes celestialFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.floating-badge {
+  animation: celestialFloat 4.5s ease-in-out infinite;
+}
+
+/* Pulso de luz elegante para botones de acción principal */
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(86, 214, 244, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 32px rgba(86, 214, 244, 0.65), 0 0 8px rgba(159, 202, 255, 0.4);
+  }
+}
+
+a[href*="wa.me"] {
+  animation: glowPulse 3.5s ease-in-out infinite;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+a[href*="wa.me"]:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* Brillo interactivo dinámico en botones secundarios */
+button:hover,
+a:hover {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Color sólido profundo final una vez concluye la animación del hero */

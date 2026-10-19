@@ -357,6 +357,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
+    // Toggle active chapter class for dynamic entrance & depth animations
+    chapters.forEach((sec, idx) => {
+      sec.classList.toggle('chapter-active', idx === currentChapter - 1);
+    });
+
     // Drive Hero Sequential Animation
     if (window.syncHeroAnimation) {
       window.syncHeroAnimation(percent);
