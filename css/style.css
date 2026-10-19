@@ -613,10 +613,23 @@ body.translated-rtl p {
   text-align: right;
 }
 
-/* El texto del hero centrado se mantiene siempre centrado para preservar la estética */
+/* El texto del hero y pies de foto centrados se mantienen siempre centrados para preservar la estética */
 #capitulo-01 h1,
-#capitulo-01 p {
+#capitulo-01 p,
+.text-center,
+.text-center h1,
+.text-center h2,
+.text-center h3,
+.text-center h4,
+.text-center p,
+.text-center span,
+#capitulo-07 .text-center p {
   text-align: center !important;
+}
+
+/* Blindaje de anchura de tarjetas y elementos visuales en traducciones */
+#capitulo-07 .p-space-md {
+  min-width: 280px;
 }
 
 /* Los iconos de navegación siempre mantienen su orientación espacial coherente */
