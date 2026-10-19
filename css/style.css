@@ -199,6 +199,22 @@ body {
   animation: none;
 }
 
+/* ========================================================= */
+/* PANTALLA DE CARGA ELEGANTE (SITE PRELOADER)               */
+/* ========================================================= */
+#site-preloader {
+  background-color: var(--background);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  z-index: 99999;
+}
+
+#site-preloader[data-hidden="true"] {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 /* Animación de flotación suave y sutil para insignias e iconos clave */
 @keyframes celestialFloat {
 
@@ -567,16 +583,40 @@ font[style] {
   flex-shrink: 0 !important;
 }
 
-/* Soporte para idiomas RTL (Árabe, Urdu) al traducir */
-html[lang="ar"],
-html[lang="ur"],
-body.translated-rtl {
-  direction: rtl;
+/* Blindaje de flujo espacial: el track horizontal, navegación, header y aside SIEMPRE mantienen su dirección LTR */
+#horizontal-track,
+main,
+header,
+header nav,
+aside,
+#hero-canvas-wrapper {
+  direction: ltr !important;
 }
 
-html[lang="ar"] header nav,
-html[lang="ur"] header nav {
+/* Solo se aplica RTL a los bloques de texto específicos cuando se traduce a Árabe o Urdu */
+html[lang="ar"] h1,
+html[lang="ar"] h2,
+html[lang="ar"] h3,
+html[lang="ar"] h4,
+html[lang="ar"] p,
+html[lang="ur"] h1,
+html[lang="ur"] h2,
+html[lang="ur"] h3,
+html[lang="ur"] h4,
+html[lang="ur"] p,
+body.translated-rtl h1,
+body.translated-rtl h2,
+body.translated-rtl h3,
+body.translated-rtl h4,
+body.translated-rtl p {
   direction: rtl;
+  text-align: right;
+}
+
+/* El texto del hero centrado se mantiene siempre centrado para preservar la estética */
+#capitulo-01 h1,
+#capitulo-01 p {
+  text-align: center !important;
 }
 
 /* Los iconos de navegación siempre mantienen su orientación espacial coherente */

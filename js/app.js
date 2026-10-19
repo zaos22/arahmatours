@@ -28,9 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ========================================================= */
   const canvas = document.getElementById('hero-canvas');
   const canvasWrapper = document.getElementById('hero-canvas-wrapper');
-  const heroLoader = document.getElementById('hero-loader');
-  const loaderBar = document.getElementById('hero-loader-bar');
-  const loaderText = document.getElementById('hero-loader-text');
+  const sitePreloader = document.getElementById('site-preloader');
+  const preloaderBar = document.getElementById('preloader-progress-bar');
+  const preloaderText = document.getElementById('preloader-status-text');
 
   let renderFrame = () => {};
 
@@ -118,12 +118,37 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!framesToPreload.includes(540)) framesToPreload.push(540);
     const totalToLoad = framesToPreload.length;
 
+    const preloaderStartTime = Date.now();
+    const minPreloaderDuration = 1800; // Al menos 1.8 segundos para una experiencia cinematográfica
+
+    function hidePreloader() {
+      if (sitePreloader && !sitePreloader.dataset.hidden) {
+        const elapsedTime = Date.now() - preloaderStartTime;
+        const remainingTime = Math.max(0, minPreloaderDuration - elapsedTime);
+
+        setTimeout(() => {
+          if (sitePreloader.dataset.hidden) return;
+          sitePreloader.dataset.hidden = 'true';
+          if (preloaderBar) preloaderBar.style.width = '100%';
+          if (preloaderText) preloaderText.textContent = '¡Bienvenido a Arahma Tours!';
+          setTimeout(() => {
+            sitePreloader.style.opacity = '0';
+            setTimeout(() => sitePreloader.remove(), 750);
+          }, 450);
+        }, remainingTime);
+      }
+    }
+
+    // Dismiss preloader once enough initial frames are loaded and minimum duration is fulfilled
+    function checkInitialReady() {
+      if (loadedCount >= 28 || loadedCount >= totalToLoad) {
+        hidePreloader();
+      }
+    }
+
     function preloadNextBatch(startIndex = 0, batchSize = 12) {
       if (startIndex >= totalToLoad) {
-        if (heroLoader) {
-          heroLoader.style.opacity = '0';
-          setTimeout(() => heroLoader.remove(), 700);
-        }
+        hidePreloader();
         return;
       }
 
@@ -138,9 +163,11 @@ document.addEventListener('DOMContentLoaded', () => {
         img.onload = () => {
           images.set(frameIdx, img);
           loadedCount++;
-          const progressPercent = Math.round((loadedCount / totalToLoad) * 100);
-          if (loaderBar) loaderBar.style.width = `${progressPercent}%`;
-          if (loaderText) loaderText.textContent = `Preparando experiencia (${progressPercent}%)`;
+          const progressPercent = Math.min(100, Math.round((loadedCount / totalToLoad) * 100));
+          if (preloaderBar) preloaderBar.style.width = `${Math.max(15, progressPercent)}%`;
+          if (preloaderText) preloaderText.textContent = `Preparando tu viaje (${progressPercent}%)`;
+
+          checkInitialReady();
 
           batchLoaded++;
           if (batchLoaded === targetInBatch) {
@@ -153,12 +180,16 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         img.onerror = () => {
           batchLoaded++;
+          checkInitialReady();
           if (batchLoaded === targetInBatch) {
             setTimeout(() => preloadNextBatch(endIndex, batchSize), 16);
           }
         };
       }
     }
+
+    // Safety fallback: ensure preloader is dismissed after 3.5s maximum regardless of network speed
+    setTimeout(hidePreloader, 3500);
 
     setTimeout(() => preloadNextBatch(0, 12), 100);
 

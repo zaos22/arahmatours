@@ -106,6 +106,35 @@
   </div>
 </div>
 </div></header>
+<!-- Luxury Site Preloader Overlay -->
+<div id="site-preloader" class="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-background transition-opacity duration-700 pointer-events-auto">
+  <div class="relative flex flex-col items-center gap-space-md max-w-sm px-space-md text-center">
+    <!-- Glowing Brand Emblem -->
+    <div class="relative w-20 h-20 flex items-center justify-center">
+      <div class="absolute inset-0 rounded-full bg-secondary/15 animate-ping opacity-60"></div>
+      <div class="absolute -inset-1 rounded-full bg-gradient-to-tr from-secondary/40 via-primary/30 to-transparent blur-md animate-pulse"></div>
+      <img src="assets/images/logo.png" alt="Arahma Tours Logo" class="relative w-14 h-14 object-contain filter drop-shadow-[0_0_12px_rgba(86,214,244,0.6)]" />
+    </div>
+
+    <!-- Title and Subtitle -->
+    <div class="flex flex-col items-center">
+      <h2 class="font-display-hero text-headline-sm uppercase tracking-widest text-on-surface notranslate" translate="no">Arahma Tours</h2>
+      <p class="font-label-caps text-[11px] tracking-[0.2em] text-secondary uppercase mt-1">Vive una Umrah Diferente</p>
+    </div>
+
+    <!-- Modern Progress Bar -->
+    <div class="w-56 h-1 bg-surface-container-highest rounded-full overflow-hidden mt-space-sm relative border border-secondary/20">
+      <div id="preloader-progress-bar" class="h-full bg-gradient-to-r from-secondary to-primary-fixed-dim transition-all duration-200" style="width: 15%;"></div>
+    </div>
+
+    <!-- Progress Status Indicator -->
+    <div class="flex items-center gap-2 mt-1">
+      <span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+      <span id="preloader-status-text" class="font-label-caps text-[10px] tracking-widest text-on-surface-variant uppercase">Preparando tu viaje...</span>
+    </div>
+  </div>
+</div>
+
 <!-- Hidden Google Translate Element Container -->
 <div id="google_translate_element" style="display:none;"></div>
 <main class="w-full pt-20 bg-background min-h-screen"><div class="flex flex-col w-full relative">
@@ -127,14 +156,6 @@
 
   <!-- Capa 4: Resplandor celestial cyan sutil que aporta brillo de alta gama -->
   <div class="hero-celestial-glow absolute inset-0 pointer-events-none"></div>
-
-  <!-- Frame Loading Progress Bar -->
-  <div id="hero-loader" class="absolute bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none transition-opacity duration-700 z-30">
-    <div class="w-48 h-1 bg-surface-container-highest/60 rounded-full overflow-hidden">
-      <div id="hero-loader-bar" class="h-full bg-secondary transition-all duration-150" style="width: 5%;"></div>
-    </div>
-    <span id="hero-loader-text" class="font-label-caps text-[10px] tracking-widest text-secondary uppercase">Cargando experiencia...</span>
-  </div>
 </div>
 
 <!-- ========================================== -->
