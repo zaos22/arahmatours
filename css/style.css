@@ -15,7 +15,7 @@
   --outline: #8c919b;
   --outline-variant: #424750;
   --surface-tint: #9fcaff;
-  
+
   --primary: #9fcaff;
   --on-primary: #003259;
   --primary-container: #014f88;
@@ -25,7 +25,7 @@
   --primary-fixed-dim: #9fcaff;
   --on-primary-fixed: #001c37;
   --on-primary-fixed-variant: #00497e;
-  
+
   --secondary: #56d6f4;
   --on-secondary: #003640;
   --secondary-container: #00aac6;
@@ -34,7 +34,7 @@
   --secondary-fixed-dim: #56d6f4;
   --on-secondary-fixed: #001f26;
   --on-secondary-fixed-variant: #004e5c;
-  
+
   --tertiary: #a5cfc7;
   --on-tertiary: #0a3732;
   --tertiary-container: #2c544e;
@@ -43,12 +43,12 @@
   --tertiary-fixed-dim: #a5cfc7;
   --on-tertiary-fixed: #00201c;
   --on-tertiary-fixed-variant: #254d48;
-  
+
   --error: #ffb4ab;
   --on-error: #690005;
   --error-container: #93000a;
   --on-error-container: #ffdad6;
-  
+
   --background: #001231;
   --on-background: #d8e2ff;
   --surface-variant: #233455;
@@ -63,7 +63,8 @@
   --space-8: 64px;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   background-color: var(--background);
@@ -141,13 +142,13 @@ html, body {
 }
 
 /* El hero canvas está de fondo a lo largo de todas las secciones */
-#horizontal-track > section {
+#horizontal-track>section {
   background: transparent !important;
 }
 
 /* Glassmorphism sutil sobre el contenido para permitir ver el hero de fondo en todas las secciones */
-#horizontal-track > section .p-space-lg,
-#horizontal-track > section .p-space-md {
+#horizontal-track>section .p-space-lg,
+#horizontal-track>section .p-space-md {
   background-color: rgba(12, 31, 63, 0.72) !important;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -158,33 +159,54 @@ html, body {
 }
 
 /* Efecto levitación y glow dinámico al interactuar con las tarjetas de viaje */
-#horizontal-track > section .p-space-lg:hover,
-#horizontal-track > section .p-space-md:hover {
+#horizontal-track>section .p-space-lg:hover,
+#horizontal-track>section .p-space-md:hover {
   transform: translateY(-4px);
   border-color: rgba(86, 214, 244, 0.35);
   box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.8), 0 0 24px rgba(86, 214, 244, 0.2);
 }
 
-/* Animación de entrada fluida para los elementos centrales de cada capítulo */
-#horizontal-track > section > div.relative {
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+/* ========================================================= */
+/* ANIMACIONES DE ENTRADA Y REVELADO DINÁMICO                */
+/* ========================================================= */
+
+/* Animación de entrada viva para CADA capítulo al activarse */
+@keyframes chapterEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(45px) scale(0.94);
+  }
+  60% {
+    opacity: 0.95;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Solo se anima al estar en él: cuando el capítulo adquiere .chapter-active se dispara la animación */
+#horizontal-track > section.chapter-active > div.relative {
+  animation: chapterEntrance 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity;
+  pointer-events: auto;
 }
 
 #horizontal-track > section:not(.chapter-active) > div.relative {
-  opacity: 0.75;
-  transform: scale(0.975);
-}
-
-#horizontal-track > section.chapter-active > div.relative {
-  opacity: 1;
-  transform: scale(1);
+  opacity: 0;
+  transform: translateY(45px) scale(0.94);
+  pointer-events: none;
+  animation: none;
 }
 
 /* Animación de flotación suave y sutil para insignias e iconos clave */
 @keyframes celestialFloat {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-6px);
   }
@@ -196,9 +218,12 @@ html, body {
 
 /* Pulso de luz elegante para botones de acción principal */
 @keyframes glowPulse {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 0 20px rgba(86, 214, 244, 0.35);
   }
+
   50% {
     box-shadow: 0 0 32px rgba(86, 214, 244, 0.65), 0 0 8px rgba(159, 202, 255, 0.4);
   }
@@ -221,14 +246,17 @@ a:hover {
 
 /* Color sólido profundo final una vez concluye la animación del hero */
 body {
-  background-color: var(--background) !important; /* #001231 */
+  background-color: var(--background) !important;
+  /* #001231 */
 }
 
 /* ========================================================= */
 /* DESKTOP / PC HORIZONTAL EXPERIENCE (Landscape & Min-width) */
 /* ========================================================= */
 @media (min-width: 1025px) and (orientation: landscape) {
-  html, body {
+
+  html,
+  body {
     overflow-x: hidden !important;
     overflow-y: hidden !important;
     height: 100% !important;
@@ -264,7 +292,7 @@ body {
 
 
   /* Centrado vertical y simetría proporcional perfecta entre el Navbar superior (80px + margen) y Aside inferior (64px + margen) */
-  #horizontal-track > section {
+  #horizontal-track>section {
     min-width: 100vw !important;
     width: 100vw !important;
     height: 100vh !important;
@@ -283,7 +311,7 @@ body {
     position: relative;
   }
 
-  #horizontal-track > section > div.relative {
+  #horizontal-track>section>div.relative {
     margin: auto !important;
     width: 100%;
     max-width: 72rem;
@@ -300,7 +328,7 @@ body {
     bottom: 0.75rem !important;
   }
 
-  aside > div {
+  aside>div {
     pointer-events: auto;
   }
 }
@@ -308,8 +336,11 @@ body {
 /* ========================================================= */
 /* PANTALLAS ALARGADAS / MÓVILES (Vertical Scroll Mode)      */
 /* ========================================================= */
-@media (max-width: 1024px), (orientation: portrait) {
-  html, body {
+@media (max-width: 1024px),
+(orientation: portrait) {
+
+  html,
+  body {
     overflow-y: auto !important;
     overflow-x: hidden !important;
     height: auto !important;
@@ -338,11 +369,11 @@ body {
     user-select: auto !important;
   }
 
-  #horizontal-track > div.pointer-events-none {
+  #horizontal-track>div.pointer-events-none {
     display: none !important;
   }
 
-  #horizontal-track > section {
+  #horizontal-track>section {
     min-width: 100% !important;
     width: 100% !important;
     min-height: auto !important;
@@ -363,7 +394,7 @@ body {
     box-sizing: border-box !important;
   }
 
-  #horizontal-track > section > div.relative {
+  #horizontal-track>section>div.relative {
     margin: 0 auto !important;
     width: 100% !important;
     max-width: 100% !important;
@@ -372,7 +403,11 @@ body {
   }
 
   /* Evitar desbordes de texto cuando la traducción genera palabras largas */
-  h1, h2, h3, p, span {
+  h1,
+  h2,
+  h3,
+  p,
+  span {
     overflow-wrap: break-word;
     word-break: break-word;
     hyphens: auto;
@@ -382,15 +417,27 @@ body {
   aside {
     display: none !important;
   }
+
+  /* En vertical / móvil se activa la animación de entrada al entrar en el viewport de cada sección */
+  #horizontal-track > section.chapter-active > div.relative {
+    animation: chapterEntrance 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+  }
+
+  #horizontal-track > section:not(.chapter-active) > div.relative {
+    opacity: 0.15 !important;
+    transform: translateY(30px) scale(0.96) !important;
+    animation: none !important;
+  }
 }
 
 /* Header responsive height */
-header > div {
+header>div {
   min-height: 3.5rem;
 }
 
 /* Accessibility: respect preferred-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -426,7 +473,8 @@ iframe.goog-te-banner-frame,
 }
 
 /* Evitar que Google Translate empuje el body hacia abajo */
-html, body {
+html,
+body {
   top: 0px !important;
   position: relative !important;
 }
@@ -435,7 +483,7 @@ body {
   top: 0px !important;
 }
 
-.skiptranslate > iframe {
+.skiptranslate>iframe {
   display: none !important;
   visibility: hidden !important;
 }

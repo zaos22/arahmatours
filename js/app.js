@@ -325,7 +325,17 @@ document.addEventListener('DOMContentLoaded', () => {
       const maxScroll = track.scrollWidth - track.clientWidth;
       const currentScroll = track.scrollLeft;
       percent = maxScroll > 0 ? (currentScroll / maxScroll) : 0;
-      currentChapter = Math.min(totalChapters, Math.max(1, Math.round((currentScroll / window.innerWidth) + 1)));
+      
+      // Identificar con precisión qué capítulo está centrado en pantalla
+      const trackCenter = currentScroll + (window.innerWidth / 2);
+      for (let i = 0; i < chapters.length; i++) {
+        const secLeft = chapters[i].offsetLeft;
+        const secRight = secLeft + chapters[i].offsetWidth;
+        if (trackCenter >= secLeft && trackCenter < secRight) {
+          currentChapter = i + 1;
+          break;
+        }
+      }
 
       // Sync Bottom UI
       const percentInt = Math.min(100, Math.max(0, percent * 100));
