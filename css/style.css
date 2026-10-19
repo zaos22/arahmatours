@@ -99,47 +99,142 @@ html, body {
 }
 
 /* ========================================================= */
-/* DESKTOP / HORIZONTAL (Landscape & PC Viewports)           */
+/* HERO SCROLL TRIGGER ANIMATION & CANVAS STYLES             */
+/* ========================================================= */
+.bg-radial-vignette {
+  background: radial-gradient(circle at center, transparent 35%, rgba(0, 18, 49, 0.88) 100%);
+}
+
+#hero-canvas-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+#hero-canvas {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Micro-grano cinematográfico procedural: camufla el pixelado y compresión de los frames JPEG */
+.hero-film-grain {
+  background-image: radial-gradient(rgba(86, 214, 244, 0.08) 1px, transparent 1px), radial-gradient(rgba(0, 18, 49, 0.25) 1px, transparent 1px);
+  background-size: 4px 4px, 8px 8px;
+  background-position: 0 0, 2px 2px;
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+/* Resplandor celestial cyan sutil que unifica el tono de color y oculta el banding */
+.hero-celestial-glow {
+  background: radial-gradient(circle at 50% 45%, rgba(86, 214, 244, 0.14) 0%, rgba(1, 79, 136, 0.12) 40%, transparent 75%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+/* El hero canvas está de fondo a lo largo de todas las secciones */
+#horizontal-track > section {
+  background: transparent !important;
+}
+
+/* Glassmorphism sutil sobre el contenido para permitir ver el hero de fondo en todas las secciones */
+#horizontal-track > section .p-space-lg,
+#horizontal-track > section .p-space-md {
+  background-color: rgba(12, 31, 63, 0.72) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(86, 214, 244, 0.12);
+}
+
+/* Color sólido profundo final una vez concluye la animación del hero */
+body {
+  background-color: var(--background) !important; /* #001231 */
+}
+
+/* ========================================================= */
+/* DESKTOP / PC HORIZONTAL EXPERIENCE (Landscape & Min-width) */
 /* ========================================================= */
 @media (min-width: 1025px) and (orientation: landscape) {
-  /* One-Take Horizontal Track Layout */
+  html, body {
+    overflow-x: hidden !important;
+    overflow-y: hidden !important;
+    height: 100% !important;
+  }
+
+  /* Altura de cabecera fija de 5.5rem */
+  header {
+    height: 5.5rem;
+  }
+
+  /* Contenedor principal a pantalla completa */
+  main {
+    height: 100vh !important;
+    min-height: 580px;
+    overflow: hidden !important;
+    padding-top: 0 !important;
+  }
+
   #horizontal-track {
     display: flex !important;
     flex-direction: row !important;
     overflow-x: auto !important;
     overflow-y: hidden !important;
     scroll-snap-type: x mandatory !important;
-    height: calc(100vh - 5rem) !important;
-    min-height: 580px;
-    max-height: 100vh;
+    height: 100% !important;
+    width: 100% !important;
+    cursor: grab;
   }
 
+  #horizontal-track:active {
+    cursor: grabbing;
+  }
+
+
+  /* Centrado vertical y simetría proporcional perfecta entre el Navbar superior (80px + margen) y Aside inferior (64px + margen) */
   #horizontal-track > section {
     min-width: 100vw !important;
     width: 100vw !important;
-    height: 100% !important;
+    height: 100vh !important;
     flex-shrink: 0 !important;
     scroll-snap-align: center !important;
-    padding-top: var(--space-2);
-    padding-bottom: calc(4.5rem + var(--space-2));
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    /* 5.75rem (~92px) superior para librar el navbar con aire holgado, y 5.25rem (~84px) inferior para la barra flotante */
+    padding-top: clamp(4.5rem, 9vh, 6.5rem) !important;
+    padding-bottom: clamp(4.25rem, 8.5vh, 6rem) !important;
+    padding-left: clamp(2rem, 6vw, 5rem) !important;
+    padding-right: clamp(2rem, 6vw, 5rem) !important;
     box-sizing: border-box;
+    border-bottom: none !important;
+    position: relative;
   }
 
   #horizontal-track > section > div.relative {
-    margin-top: auto;
-    margin-bottom: auto;
+    margin: auto !important;
     width: 100%;
-    max-height: 100%;
+    max-width: 72rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
-  /* Aside bar is visible on PC/horizontal mode */
+  /* Centrado de la barra inferior con el mismo margen que el header */
   aside {
     display: flex !important;
     pointer-events: none;
+    bottom: 0.75rem !important;
   }
+
   aside > div {
     pointer-events: auto;
   }
@@ -161,16 +256,10 @@ html, body {
   main {
     min-height: auto !important;
     height: auto !important;
-    padding-top: 5rem !important;
+    padding-top: clamp(4.5rem, 10vh, 5.5rem) !important;
     overflow: visible !important;
   }
 
-  main > div.flex.flex-col {
-    height: auto !important;
-    overflow: visible !important;
-  }
-
-  /* El track se convierte en un flujo vertical continuo */
   #horizontal-track {
     display: flex !important;
     flex-direction: column !important;
@@ -184,12 +273,10 @@ html, body {
     user-select: auto !important;
   }
 
-  /* Curva SVG decorativa oculta en vertical */
   #horizontal-track > div.pointer-events-none {
     display: none !important;
   }
 
-  /* Cada sección ocupa su alto natural con espaciado uniforme */
   #horizontal-track > section {
     min-width: 100% !important;
     width: 100% !important;
@@ -198,34 +285,43 @@ html, body {
     max-height: none !important;
     flex-shrink: 0 !important;
     scroll-snap-align: none !important;
-    padding-top: 3.5rem !important;
-    padding-bottom: 3.5rem !important;
-    padding-left: var(--space-2) !important;
-    padding-right: var(--space-2) !important;
+    padding-top: clamp(2rem, 5vh, 4rem) !important;
+    padding-bottom: clamp(2rem, 5vh, 4rem) !important;
+    padding-left: clamp(1rem, 4vw, 2rem) !important;
+    padding-right: clamp(1rem, 4vw, 2rem) !important;
     border-bottom: 1px solid rgba(86, 214, 244, 0.08);
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
     position: relative !important;
+    box-sizing: border-box !important;
   }
 
   #horizontal-track > section > div.relative {
     margin: 0 auto !important;
     width: 100% !important;
+    max-width: 100% !important;
     max-height: none !important;
     height: auto !important;
   }
 
-  /* Ocultar barra flotante de navegación horizontal en pantallas verticales */
+  /* Evitar desbordes de texto cuando la traducción genera palabras largas */
+  h1, h2, h3, p, span {
+    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+  }
+
+  /* Aside bar oculto en vertical/móvil */
   aside {
     display: none !important;
   }
 }
 
-/* Header safe sizing */
+/* Header responsive height */
 header > div {
-  min-height: 4rem;
+  min-height: 3.5rem;
 }
 
 /* Accessibility: respect preferred-reduced-motion */
@@ -238,4 +334,140 @@ header > div {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* ========================================================= */
+/* Google Translate Widget Overrides & Custom Styling        */
+/* ========================================================= */
+/* Ocultar banner superior de Google Translate en todas sus variantes */
+iframe.goog-te-banner-frame,
+.goog-te-banner-frame,
+.goog-te-banner-frame.skiptranslate,
+#goog-gt-tt,
+.goog-te-balloon-frame,
+.goog-tooltip,
+.goog-tooltip:hover {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  width: 0 !important;
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+  pointer-events: none !important;
+  z-index: -9999 !important;
+}
+
+/* Evitar que Google Translate empuje el body hacia abajo */
+html, body {
+  top: 0px !important;
+  position: relative !important;
+}
+
+body {
+  top: 0px !important;
+}
+
+.skiptranslate > iframe {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.goog-text-highlight {
+  background-color: transparent !important;
+  background: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Blindaje de fuentes tipográficas para que Google Translate no sobreescriba familias ni medidas */
+font,
+font[style] {
+  font-family: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  letter-spacing: inherit !important;
+  color: inherit !important;
+  background-color: transparent !important;
+  vertical-align: baseline !important;
+}
+
+/* Protección absoluta de Iconos Material Symbols (para que no se rompan ni se traduzcan como texto) */
+.material-symbols-outlined,
+[class*="material-symbols"] {
+  font-family: 'Material Symbols Outlined' !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  line-height: 1 !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+  display: inline-block !important;
+  white-space: nowrap !important;
+  word-wrap: normal !important;
+  direction: ltr !important;
+  font-feature-settings: 'liga' !important;
+  -webkit-font-feature-settings: 'liga' !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+/* El botón selector de idioma mantiene dimensiones compactas y no se desborda */
+#lang-dropdown-btn {
+  width: 2.5rem !important;
+  height: 2.5rem !important;
+  min-width: 2.5rem !important;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+#lang-dropdown-menu {
+  width: 13.5rem !important;
+  min-width: 13.5rem !important;
+  box-sizing: border-box !important;
+}
+
+/* En pantallas móviles muy compactas, asegurar que el dropdown no exceda los bordes de la pantalla */
+@media (max-width: 360px) {
+  #lang-dropdown-menu {
+    width: 11.5rem !important;
+    min-width: 11.5rem !important;
+    right: -0.5rem !important;
+  }
+}
+
+#lang-dropdown-menu .grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 0.625rem !important;
+  justify-items: center !important;
+  align-items: center !important;
+}
+
+#lang-dropdown-menu .lang-option {
+  width: 2.5rem !important;
+  height: 2.5rem !important;
+  min-width: 2.5rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+}
+
+/* Soporte para idiomas RTL (Árabe, Urdu) al traducir */
+html[lang="ar"],
+html[lang="ur"],
+body.translated-rtl {
+  direction: rtl;
+}
+
+html[lang="ar"] header nav,
+html[lang="ur"] header nav {
+  direction: rtl;
+}
+
+/* Los iconos de navegación siempre mantienen su orientación espacial coherente */
+.material-symbols-outlined[class*="arrow_"],
+.material-symbols-outlined[class*="east"] {
+  transform-origin: center;
 }

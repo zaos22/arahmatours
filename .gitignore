@@ -2,24 +2,51 @@
 node_modules/
 package-lock.json
 
-# Environment variables
+# Environment variables & secrets
 .env
 .env.local
 .env.*.local
+*.pem
+*.key
 
 # Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 *.log
 
 # Editor & OS files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
+[Dd]esktop.ini
 .vscode/
+!.vscode/extensions.json
 .idea/
+*.sublime-project
+*.sublime-workspace
 
-# Temp & build artifacts
+# Scratch, temporary and test folders
+scratch/
+*.tmp
+*.temp
+.cache/
+
+# Stitch export & design reference raw dumps (unused in production build)
+stitch_arahma_tours_one_take_website/
+
+# Build & deployment artifacts
 dist/
 build/
-*.tmp
+out/
+.parcel-cache/
+.next/
+
+# Coverage & profiling
+coverage/
+.nyc_output/
