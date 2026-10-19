@@ -80,18 +80,18 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.filter = 'none';
         ctx.drawImage(baseImg0, ox, oy, nw, nh);
 
-        // 2. Sobreponer con fundido gradual el fotograma destino
+        // 2. Sobreponer con fundido gradual el fotograma destino suavizado
         ctx.globalAlpha = transitionBlend;
-        ctx.filter = 'contrast(106%) brightness(96%) saturate(108%)';
+        ctx.filter = 'blur(0.5px) contrast(104%) brightness(95%) saturate(106%)';
         ctx.drawImage(img, ox, oy, nw, nh);
         ctx.globalAlpha = 1;
         ctx.filter = 'none';
         return;
       }
 
-      // Renderizado normal una vez superada la transición inicial
+      // Renderizado normal: micro-blur subpíxel (0.45px) elimina el pixelado y ruido JPEG sin perder nitidez general
       if (index > 0) {
-        ctx.filter = 'contrast(106%) brightness(96%) saturate(108%)';
+        ctx.filter = 'blur(0.45px) contrast(104%) brightness(95%) saturate(106%)';
       } else {
         ctx.filter = 'none';
       }
