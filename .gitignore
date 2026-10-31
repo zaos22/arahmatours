@@ -37,9 +37,6 @@ scratch/
 *.temp
 .cache/
 
-# Stitch export & design reference raw dumps (unused in production build)
-stitch_arahma_tours_one_take_website/
-
 # Build & deployment artifacts
 dist/
 build/
