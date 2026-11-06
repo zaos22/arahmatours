@@ -5,9 +5,14 @@
   "main": "index.html",
   "scripts": {
     "dev": "serve -p 3000 .",
-    "start": "serve -p 3000 ."
+    "start": "serve -p 3000 .",
+    "test": "playwright test"
   },
   "dependencies": {
     "serve": "^14.2.4"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.0",
+    "playwright": "^1.65.0"
   }
 }
