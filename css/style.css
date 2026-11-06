@@ -374,8 +374,10 @@ body {
     font-size: 11px !important;
   }
 
-  header img {
+  header img[alt*="Logo"],
+  header .shrink-0 > img {
     height: 1.625rem !important;
+    width: auto !important;
   }
 
   /* Barra inferior de navegación compacta */
@@ -893,6 +895,17 @@ font[style] {
   white-space: nowrap;
 }
 
+#lang-dropdown-btn img,
+#current-flag-img {
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  min-width: 1.5rem !important;
+  min-height: 1.5rem !important;
+  border-radius: 9999px !important;
+  object-fit: cover !important;
+  display: block !important;
+}
+
 #lang-dropdown-menu {
   width: 13.5rem !important;
   min-width: 13.5rem !important;
@@ -924,6 +937,16 @@ font[style] {
   align-items: center !important;
   justify-content: center !important;
   flex-shrink: 0 !important;
+}
+
+#lang-dropdown-menu .lang-option img {
+  width: 1.75rem !important;
+  height: 1.75rem !important;
+  min-width: 1.75rem !important;
+  min-height: 1.75rem !important;
+  border-radius: 9999px !important;
+  object-fit: cover !important;
+  display: block !important;
 }
 
 /* Blindaje de flujo espacial: el track horizontal, navegación, header y aside SIEMPRE mantienen su dirección LTR */

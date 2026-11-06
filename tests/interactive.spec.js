@@ -3,7 +3,7 @@ const { test, expect } = require('@playwright/test');
 test.describe('Arahma Tours - Flujos Interactivos y Componentes', () => {
 
   test('El selector de idiomas despliega las 8 banderas y permite cambiar de idioma', async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/', { waitUntil: 'domcontentloaded' });
 
     const langBtn = page.locator('#lang-dropdown-btn');
     const langMenu = page.locator('#lang-dropdown-menu');
@@ -24,7 +24,7 @@ test.describe('Arahma Tours - Flujos Interactivos y Componentes', () => {
   });
 
   test('El acordeón de preguntas frecuentes (Capítulo 08) se expande y contrae', async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/', { waitUntil: 'domcontentloaded' });
 
     // Localizar primer botón de FAQ
     const firstFaqBtn = page.locator('#faq-accordion button').first();
@@ -50,7 +50,7 @@ test.describe('Arahma Tours - Flujos Interactivos y Componentes', () => {
       test.skip();
     }
 
-    await page.goto('/');
+    await page.goto('/', { waitUntil: 'domcontentloaded' });
 
     const nextBtn = page.locator('#next-chapter-btn');
     const prevBtn = page.locator('#prev-chapter-btn');
@@ -69,7 +69,7 @@ test.describe('Arahma Tours - Flujos Interactivos y Componentes', () => {
   });
 
   test('Capítulo 06: Botón de reserva por WhatsApp está visible y contiene texto correcto', async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/', { waitUntil: 'domcontentloaded' });
 
     const cap06 = page.locator('#capitulo-06');
     await expect(cap06).toBeAttached();

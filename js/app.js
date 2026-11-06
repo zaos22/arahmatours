@@ -462,14 +462,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const langOptions = document.querySelectorAll('.lang-option');
 
   const langMeta = {
-    es: { flag: 'https://flagcdn.com/w80/es.png', code: 'ES', alt: 'Español' },
-    ar: { flag: 'https://flagcdn.com/w80/sa.png', code: 'AR', alt: 'Árabe' },
-    en: { flag: 'https://flagcdn.com/w80/gb.png', code: 'EN', alt: 'Inglés' },
-    fr: { flag: 'https://flagcdn.com/w80/fr.png', code: 'FR', alt: 'Francés' },
-    id: { flag: 'https://flagcdn.com/w80/id.png', code: 'ID', alt: 'Indonesio' },
-    ur: { flag: 'https://flagcdn.com/w80/pk.png', code: 'UR', alt: 'Urdu' },
-    tr: { flag: 'https://flagcdn.com/w80/tr.png', code: 'TR', alt: 'Turco' },
-    bn: { flag: 'https://flagcdn.com/w80/bd.png', code: 'BN', alt: 'Bengalí' }
+    es: { flag: 'assets/images/flags/es.png', code: 'ES', alt: 'Español' },
+    ar: { flag: 'assets/images/flags/sa.png', code: 'AR', alt: 'Árabe' },
+    en: { flag: 'assets/images/flags/gb.png', code: 'EN', alt: 'Inglés' },
+    fr: { flag: 'assets/images/flags/fr.png', code: 'FR', alt: 'Francés' },
+    id: { flag: 'assets/images/flags/id.png', code: 'ID', alt: 'Indonesio' },
+    ur: { flag: 'assets/images/flags/pk.png', code: 'UR', alt: 'Urdu' },
+    tr: { flag: 'assets/images/flags/tr.png', code: 'TR', alt: 'Turco' },
+    bn: { flag: 'assets/images/flags/bd.png', code: 'BN', alt: 'Bengalí' }
   };
 
   const currentFlagImg = document.getElementById('current-flag-img');

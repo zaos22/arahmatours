@@ -56,49 +56,49 @@
   <!-- Selector de Idiomas con Banderas (Solo banderas, sin texto) -->
   <div class="relative shrink-0" id="lang-selector-container">    <!-- Botón de bandera activa -->
     <button id="lang-dropdown-btn" type="button" translate="no" aria-expanded="false" aria-haspopup="true" class="notranslate w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-surface-container hover:bg-surface-container-highest border border-secondary/20 flex items-center justify-center transition-all cursor-pointer shadow-sm hover:border-secondary/40 p-1" title="Seleccionar idioma">
-      <img id="current-flag-img" class="w-5 h-5 sm:w-6 sm:h-6 rounded-full object-cover shadow-sm pointer-events-none select-none" src="https://flagcdn.com/w80/es.png" alt="Español" />
+      <img id="current-flag-img" class="w-5 h-5 sm:w-6 sm:h-6 rounded-full object-cover shadow-sm pointer-events-none select-none" src="assets/images/flags/es.png" alt="Español" onerror="this.src='https://flagcdn.com/w80/es.png'" />
     </button>
 
     <!-- Menú desplegable flotante con las banderas -->
     <div id="lang-dropdown-menu" translate="no" class="hidden notranslate absolute right-0 top-full mt-2 p-3 w-52 rounded-2xl bg-surface-container-high/95 backdrop-blur-2xl border border-secondary/20 shadow-[0_20px_40px_rgba(0,0,0,0.8)] z-50 transition-all box-border">
       <div class="grid grid-cols-4 gap-3 place-items-center">
         <button type="button" data-lang="es" class="lang-option w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-container-highest transition-transform hover:scale-110 cursor-pointer border border-transparent hover:border-secondary/40 relative p-1.5" title="Español">
-          <img class="w-7 h-7 rounded-full object-cover shadow-sm pointer-events-none" src="https://flagcdn.com/w80/es.png" alt="Español" />
+          <img class="w-7 h-7 rounded-full object-cover shadow-sm pointer-events-none" src="assets/images/flags/es.png" alt="Español" onerror="this.src='https://flagcdn.com/w80/es.png'" />
           <span class="lang-dot absolute bottom-0.5 right-0.5 w-2 h-2 rounded-full bg-secondary border border-surface-container-high"></span>
         </button>
 
         <button type="button" data-lang="ar" class="lang-option w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-container-highest transition-transform hover:scale-110 cursor-pointer border border-transparent hover:border-secondary/40 relative p-1.5" title="العربية">
-          <img class="w-7 h-7 rounded-full object-cover shadow-sm pointer-events-none" src="https://flagcdn.com/w80/sa.png" alt="Árabe" />
+          <img class="w-7 h-7 rounded-full object-cover shadow-sm pointer-events-none" src="assets/images/flags/sa.png" alt="Árabe" onerror="this.src='https://flagcdn.com/w80/sa.png'" />
           <span class="lang-dot absolute bottom-0.5 right-0.5 w-2 h-2 rounded-full bg-secondary border border-surface-container-high hidden"></span>
         </button>
 
         <button type="button" data-lang="en" class="lang-option w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-container-highest transition-transform hover:scale-110 cursor-pointer border border-transparent hover:border-secondary/40 relative p-1.5" title="English">
-          <img class="w-7 h-7 rounded-full object-cover shadow-sm pointer-events-none" src="https://flagcdn.com/w80/gb.png" alt="English" />
+          <img class="w-7 h-7 rounded-full object-cover shadow-sm pointer-events-none" src="assets/images/flags/gb.png" alt="English" onerror="this.src='https://flagcdn.com/w80/gb.png'" />
           <span class="lang-dot absolute bottom-0.5 right-0.5 w-2 h-2 rounded-full bg-secondary border border-surface-container-high hidden"></span>
         </button>
 
         <button type="button" data-lang="fr" class="lang-option w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-container-highest transition-transform hover:scale-110 cursor-pointer border border-transparent hover:border-secondary/40 relative p-1.5" title="Français">
-          <img class="w-7 h-7 rounded-full object-cover shadow-sm pointer-events-none" src="https://flagcdn.com/w80/fr.png" alt="Français" />
+          <img class="w-7 h-7 rounded-full object-cover shadow-sm pointer-events-none" src="assets/images/flags/fr.png" alt="Français" onerror="this.src='https://flagcdn.com/w80/fr.png'" />
           <span class="lang-dot absolute bottom-0.5 right-0.5 w-2 h-2 rounded-full bg-secondary border border-surface-container-high hidden"></span>
         </button>
 
         <button type="button" data-lang="id" class="lang-option w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-container-highest transition-transform hover:scale-110 cursor-pointer border border-transparent hover:border-secondary/40 relative p-1.5" title="Bahasa Indonesia">
-          <img class="w-7 h-7 rounded-full object-cover shadow-sm pointer-events-none" src="https://flagcdn.com/w80/id.png" alt="Indonesio" />
+          <img class="w-7 h-7 rounded-full object-cover shadow-sm pointer-events-none" src="assets/images/flags/id.png" alt="Indonesio" onerror="this.src='https://flagcdn.com/w80/id.png'" />
           <span class="lang-dot absolute bottom-0.5 right-0.5 w-2 h-2 rounded-full bg-secondary border border-surface-container-high hidden"></span>
         </button>
 
         <button type="button" data-lang="ur" class="lang-option w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-container-highest transition-transform hover:scale-110 cursor-pointer border border-transparent hover:border-secondary/40 relative p-1.5" title="اردو">
-          <img class="w-7 h-7 rounded-full object-cover shadow-sm pointer-events-none" src="https://flagcdn.com/w80/pk.png" alt="Urdu" />
+          <img class="w-7 h-7 rounded-full object-cover shadow-sm pointer-events-none" src="assets/images/flags/pk.png" alt="Urdu" onerror="this.src='https://flagcdn.com/w80/pk.png'" />
           <span class="lang-dot absolute bottom-0.5 right-0.5 w-2 h-2 rounded-full bg-secondary border border-surface-container-high hidden"></span>
         </button>
 
         <button type="button" data-lang="tr" class="lang-option w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-container-highest transition-transform hover:scale-110 cursor-pointer border border-transparent hover:border-secondary/40 relative p-1.5" title="Türkçe">
-          <img class="w-7 h-7 rounded-full object-cover shadow-sm pointer-events-none" src="https://flagcdn.com/w80/tr.png" alt="Turco" />
+          <img class="w-7 h-7 rounded-full object-cover shadow-sm pointer-events-none" src="assets/images/flags/tr.png" alt="Turco" onerror="this.src='https://flagcdn.com/w80/tr.png'" />
           <span class="lang-dot absolute bottom-0.5 right-0.5 w-2 h-2 rounded-full bg-secondary border border-surface-container-high hidden"></span>
         </button>
 
         <button type="button" data-lang="bn" class="lang-option w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-container-highest transition-transform hover:scale-110 cursor-pointer border border-transparent hover:border-secondary/40 relative p-1.5" title="বাংলা">
-          <img class="w-7 h-7 rounded-full object-cover shadow-sm pointer-events-none" src="https://flagcdn.com/w80/bd.png" alt="Bengalí" />
+          <img class="w-7 h-7 rounded-full object-cover shadow-sm pointer-events-none" src="assets/images/flags/bd.png" alt="Bengalí" onerror="this.src='https://flagcdn.com/w80/bd.png'" />
           <span class="lang-dot absolute bottom-0.5 right-0.5 w-2 h-2 rounded-full bg-secondary border border-surface-container-high hidden"></span>
         </button>
       </div>
