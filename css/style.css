@@ -350,6 +350,349 @@ body {
 }
 
 /* ========================================================= */
+/* PANTALLAS COMPACTAS / PORTÁTILES (1366x768 Y RELACIONADAS) */
+/* Optimización de altura y espaciados sin tocar móviles ni   */
+/* monitores de alta resolución (> 850px de altura)          */
+/* ========================================================= */
+@media (min-width: 1025px) and (orientation: landscape) and (max-height: 850px) {
+
+  /* Cabecera optimizada para pantallas con altura reducida */
+  header {
+    height: 4.25rem !important;
+    padding-top: 0.375rem !important;
+  }
+
+  header > div {
+    height: 3.5rem !important;
+    min-height: 3.5rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  header nav a {
+    padding: 0.25rem 0.625rem !important;
+    font-size: 11px !important;
+  }
+
+  header img {
+    height: 1.625rem !important;
+  }
+
+  /* Barra inferior de navegación compacta */
+  aside {
+    bottom: 0.4rem !important;
+    padding-bottom: 0 !important;
+  }
+
+  aside > div {
+    height: 3.25rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  #prev-chapter-btn,
+  #next-chapter-btn {
+    width: 1.875rem !important;
+    height: 1.875rem !important;
+  }
+
+  #prev-chapter-btn .material-symbols-outlined,
+  #next-chapter-btn .material-symbols-outlined {
+    font-size: 16px !important;
+  }
+
+  #progress-plane-indicator {
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+  }
+
+  #progress-plane-indicator .material-symbols-outlined {
+    font-size: 11px !important;
+  }
+
+  #chapter-indicator-label,
+  .chapter-dot {
+    font-size: 10px !important;
+  }
+
+  /* Ajuste de márgenes del track para librar header y aside */
+  #horizontal-track > section {
+    padding-top: 4.5rem !important;
+    padding-bottom: 3.875rem !important;
+    padding-left: clamp(1.5rem, 4vw, 3rem) !important;
+    padding-right: clamp(1.5rem, 4vw, 3rem) !important;
+  }
+
+  /* Contenedor relativo de capítulo con límite de altura y scroll de emergencia */
+  #horizontal-track > section > div.relative {
+    max-width: 68rem !important;
+    max-height: calc(100vh - 8.5rem) !important;
+    overflow-y: auto !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+
+  #horizontal-track > section > div.relative::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  /* Tipografías calibradas proporcionalmente a 768px de alto */
+  .font-display-hero,
+  h1.font-display-hero,
+  h2.font-display-hero {
+    font-size: clamp(26px, 3.2vw, 36px) !important;
+    line-height: 1.18 !important;
+  }
+
+  .font-headline-lg,
+  h2.font-headline-lg {
+    font-size: clamp(20px, 2.2vw, 26px) !important;
+    line-height: 1.22 !important;
+  }
+
+  .font-headline-sm,
+  h3.font-headline-sm {
+    font-size: 17px !important;
+    line-height: 22px !important;
+  }
+
+  .font-title-lg {
+    font-size: 17px !important;
+    line-height: 22px !important;
+  }
+
+  .font-title-md {
+    font-size: 14px !important;
+    line-height: 19px !important;
+  }
+
+  .font-body-lg {
+    font-size: 14px !important;
+    line-height: 21px !important;
+  }
+
+  .font-body-md {
+    font-size: 13px !important;
+    line-height: 18px !important;
+  }
+
+  .font-body-sm {
+    font-size: 11.5px !important;
+    line-height: 16px !important;
+  }
+
+  .font-label-caps {
+    font-size: 9.5px !important;
+    letter-spacing: 0.1em !important;
+  }
+
+  .font-price-display {
+    font-size: 24px !important;
+    line-height: 28px !important;
+  }
+
+  /* Espaciados y márgenes adaptados a la cuadrícula */
+  .mb-space-xl {
+    margin-bottom: 0.875rem !important;
+  }
+
+  .mb-space-lg {
+    margin-bottom: 0.625rem !important;
+  }
+
+  .mb-space-md {
+    margin-bottom: 0.5rem !important;
+  }
+
+  .mb-space-sm {
+    margin-bottom: 0.375rem !important;
+  }
+
+  .gap-space-xl {
+    gap: 1.25rem !important;
+  }
+
+  .gap-space-lg {
+    gap: 0.75rem !important;
+  }
+
+  .gap-space-md {
+    gap: 0.5rem !important;
+  }
+
+  .p-space-lg {
+    padding: 1rem !important;
+  }
+
+  .p-space-md {
+    padding: 0.625rem !important;
+  }
+
+  .p-space-sm {
+    padding: 0.375rem 0.5rem !important;
+  }
+
+  .py-space-sm {
+    padding-top: 0.375rem !important;
+    padding-bottom: 0.375rem !important;
+  }
+
+  .px-space-xl {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+
+  .px-space-lg {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Ajustes específicos por capítulo */
+  /* Cap 01: Hero */
+  #capitulo-01 .floating-badge {
+    margin-bottom: 0.625rem !important;
+    padding: 0.25rem 0.75rem !important;
+  }
+
+  /* Cap 02: Pase de embarque */
+  #capitulo-02 .p-space-lg {
+    padding: 0.875rem !important;
+  }
+
+  #capitulo-02 .grid.grid-cols-3 {
+    padding-top: 0.375rem !important;
+    padding-bottom: 0.375rem !important;
+    margin-top: 0.25rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  /* Cap 03: La Meca - imagen y tarjetas compactas */
+  #capitulo-03 .h-44 {
+    height: 7.25rem !important;
+  }
+
+  #capitulo-03 .space-y-space-sm > div {
+    padding: 0.375rem 0.625rem !important;
+  }
+
+  /* Cap 04: Medina - imagen y tarjetas compactas */
+  #capitulo-04 .h-40 {
+    height: 6.75rem !important;
+  }
+
+  #capitulo-04 .p-space-lg {
+    padding: 0.75rem !important;
+  }
+
+  /* Cap 05: Qué Incluye - bento grid compacto */
+  #capitulo-05 .grid {
+    gap: 0.5rem !important;
+  }
+
+  #capitulo-05 .p-space-md {
+    padding: 0.5rem 0.625rem !important;
+  }
+
+  #capitulo-05 .w-10.h-10 {
+    width: 1.75rem !important;
+    height: 1.75rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  #capitulo-05 .w-10.h-10 .material-symbols-outlined {
+    font-size: 16px !important;
+  }
+
+  /* Cap 06: Fechas y Precios */
+  #capitulo-06 .grid {
+    gap: 0.75rem !important;
+  }
+
+  #capitulo-06 .p-space-lg {
+    padding: 0.75rem 1rem !important;
+  }
+
+  #capitulo-06 a[href*="wa.me"] {
+    padding-top: 0.375rem !important;
+    padding-bottom: 0.375rem !important;
+    font-size: 10px !important;
+  }
+
+  /* Cap 07: Nuestra Historia */
+  #capitulo-07 .h-72 {
+    height: 10.5rem !important;
+  }
+
+  #capitulo-07 .p-space-md {
+    padding: 0.625rem !important;
+  }
+
+  /* Cap 08: Preguntas Frecuentes */
+  #capitulo-08 button {
+    padding: 0.5rem 0.75rem !important;
+  }
+
+  #capitulo-08 button + div {
+    padding: 0.375rem 0.75rem !important;
+  }
+
+  /* Cap 09: Cierre y Contacto */
+  #capitulo-09 .w-16.h-16 {
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  #capitulo-09 .w-16.h-16 .material-symbols-outlined {
+    font-size: 22px !important;
+  }
+
+  #capitulo-09 .p-space-lg {
+    padding: 0.75rem 1rem !important;
+  }
+
+  #capitulo-09 footer {
+    margin-top: 0.5rem !important;
+    font-size: 10px !important;
+    gap: 0.5rem !important;
+  }
+}
+
+/* Nivel ultra-compacto para ventanas con toolbars (altura <= 720px) */
+@media (min-width: 1025px) and (orientation: landscape) and (max-height: 720px) {
+  #horizontal-track > section {
+    padding-top: 3.875rem !important;
+    padding-bottom: 3.5rem !important;
+  }
+
+  .font-display-hero,
+  h1.font-display-hero,
+  h2.font-display-hero {
+    font-size: 28px !important;
+    line-height: 1.15 !important;
+  }
+
+  .font-headline-lg,
+  h2.font-headline-lg {
+    font-size: 21px !important;
+    line-height: 1.18 !important;
+  }
+
+  #capitulo-03 .h-44,
+  #capitulo-04 .h-40 {
+    height: 5.25rem !important;
+  }
+
+  #capitulo-07 .h-72 {
+    height: 8rem !important;
+  }
+
+  #capitulo-05 .p-space-md {
+    padding: 0.375rem 0.5rem !important;
+  }
+}
+
+/* ========================================================= */
 /* PANTALLAS ALARGADAS / MÓVILES (Vertical Scroll Mode)      */
 /* ========================================================= */
 @media (max-width: 1024px),
